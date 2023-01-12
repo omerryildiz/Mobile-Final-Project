@@ -21,8 +21,8 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.02;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const INITIAL_POSITION = {
-  latitude: 40.76711,
-  longitude: -73.979704,
+  latitude: 41.633613,
+  longitude: 26.623419,
   latitudeDelta: LATITUDE_DELTA,
   longitudeDelta: LONGITUDE_DELTA,
 };
@@ -123,8 +123,8 @@ export default function App() {
           <MapViewDirections
             origin={origin}
             destination={destination}
-            apikey={GOOGLE_API_KEY}
-            strokeColor="#fff"
+            apikey='AIzaSyCuils-6-Qp27UxwdblijZ2R56Gu3szS24'
+            strokeColor="#f5edef"
             strokeWidth={40}
             onReady={traceRouteOnReady}
           />
@@ -132,24 +132,35 @@ export default function App() {
       </MapView>
       <View style={styles.searchContainer}>
         <InputAutocomplete
-          label="Origin"
+          label="Mevcut Konum"
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "origin");
           }}
         />
         <InputAutocomplete
-          label="Destination"
+          label="Hedef"
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "destination");
           }}
         />
         <TouchableOpacity style={styles.button} onPress={traceRoute}>
-          <Text style={styles.buttonText}>Trace route</Text>
+          <Text style={styles.buttonText}>Rota Bul</Text>
         </TouchableOpacity>
         {distance && duration ? (
-          <View>
-            <Text>Distance: {distance.toFixed(2)}</Text>
-            <Text>Duration: {Math.ceil(duration)} min</Text>
+          <View
+          style={{marginLeft:10}}
+          >
+            <Text
+            style={{textAlign:'center',
+            fontSize:20
+          
+          }}
+            >Mesafe: {distance.toFixed(2)} km</Text>
+            <Text
+             style={{textAlign:'center',
+             fontSize:20
+            }}
+            >Ulaşma süresi: {Math.ceil(duration)} dakika</Text>
           </View>
         ) : null}
       </View>
@@ -186,12 +197,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    backgroundColor: "#bbb",
+    backgroundColor: "#59abf7",
     paddingVertical: 12,
     marginTop: 16,
     borderRadius: 4,
   },
   buttonText: {
     textAlign: "center",
+    fontSize:20,
+    color:"#edf1f5"
   },
 });
